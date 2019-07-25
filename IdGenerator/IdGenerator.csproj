@@ -54,6 +54,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\SequentialGuidGenerator.cs" />
+    <Compile Include="Common\Snowflake.cs" />
+    <Compile Include="IdGeneratorFactory.cs" />
+    <Compile Include="Int64GuidGenerator.cs" />
+    <Compile Include="DbType.cs" />
+    <Compile Include="GeneratorType.cs" />
+    <Compile Include="IGenerator.cs" />
+    <Compile Include="SnowflakeGenerator.cs" />
+    <Compile Include="CombGuidGenerator.cs" />
+    <Compile Include="TimestampGenerator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +72,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GuidGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

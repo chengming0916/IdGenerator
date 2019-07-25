@@ -6,7 +6,38 @@
         xmlns:local="clr-namespace:IdGenerator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="DbType" MethodName="GetValues" ObjectType="{x:Type local:DbType}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local:DbType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="GeneratorType" MethodName="GetValues" ObjectType="{x:Type local:GeneratorType}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local:GeneratorType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox SelectedValue="{Binding DbType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding Source={StaticResource DbType}}" Margin="5"/>
+        <ComboBox Grid.Column="1" SelectedValue="{Binding GeneratorType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding Source={StaticResource GeneratorType}}" Margin="5"/>
+
+        <Button Grid.Column="2" Content="生成" Margin="5" Command="{Binding GenerateCommand}"/>
+
+        <TextBox  Grid.Row="1" Grid.ColumnSpan="3" TextWrapping="Wrap" Text="{Binding ContentText,Mode=TwoWay}"/>
+
     </Grid>
 </Window>
